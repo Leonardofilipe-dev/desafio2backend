@@ -4,8 +4,7 @@ const EventsSchema = new mongoose.Schema({
     
     dateEvents:{ 
         type: Date,
-        trim:true,
-        required:true
+        trim:true
     
     },
     titleEvents:{
@@ -20,7 +19,7 @@ const EventsSchema = new mongoose.Schema({
     },
     capacity:{
         type: Number
-    }
+    },
 
 })
 
