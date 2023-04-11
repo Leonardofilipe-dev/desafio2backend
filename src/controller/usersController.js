@@ -1,12 +1,15 @@
 import Users from "../models/Users.js";
+import bcrypt from "bcryptjs"
+
 
 class usersController {
     static async registerUser(req, res) {
         try {
             const { userName, email, password } = req.body
 
+            let passwordHash = bcrypt.hashSync(password)
             let newUser = new Users({
-                userName, email, password
+                userName, email, password: passwordHash
             })
 
             const result = await newUser.save()
@@ -46,7 +49,7 @@ class usersController {
                     userName,
                     email,
                     password
-                   
+
                 })
             return res.status(200).json(userUpdate)
 
